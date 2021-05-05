@@ -1,8 +1,6 @@
 package com.timing.teste.api;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/")
@@ -11,8 +9,8 @@ public class Teste {
     public String inicial(){
         return "Olá bem vindo a api";
     }
-    @GetMapping("/ola")
-    public  String novo(){
-        return "Ola 2";
+    @GetMapping("/ola/{idade}/{nome}")
+    public  String novo(@PathVariable(name = "idade") String idade, @PathVariable(name = "nome") String nome){
+        return "Ola, "+nome+" você tem "+idade+" anos";
     }
 }
