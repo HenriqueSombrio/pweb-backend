@@ -28,4 +28,19 @@ public class CidadeResource {
     public List<Cidade> buscaPorUf(@PathVariable(name="uf") String uf){
         return service.buscaPorUf(uf);
     }
+
+    @PutMapping("/{id}")
+    public Cidade editarCidade(@PathVariable("id") Integer id, @RequestBody Cidade dadosCidade){
+        Cidade editada = service.editarCidade(dadosCidade, id);
+
+        if (editada != null){
+            return editada;
+        } else
+            return null;
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean deletarCidade(@PathVariable("id") Integer id) {
+        return service.excluirCidade(id);
+    }
 }
